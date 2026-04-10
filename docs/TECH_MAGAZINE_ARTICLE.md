@@ -103,36 +103,8 @@ The code path uses the **Chat Completions** shape (`/chat/completions`) with opt
 
 ### 5.1 Logical component diagram
 
-```mermaid
-flowchart TB
-  subgraph Browser
-    RATES[Rates page + Chart.js]
-    ASST[Assistant page + chat UI]
-  end
+<img width="674" height="414" alt="Screenshot 2026-04-10 at 2 13 10 PM" src="https://github.com/user-attachments/assets/69dd522d-0530-4818-ae53-2ee20067d4dc" />
 
-  subgraph "FastAPI single process"
-    API[REST: / /assistant /api/*]
-    RMOD[rates + FredClient]
-    AG[agent_service: prompts + tool loop]
-    MATH[mortgage_math]
-    SCH[APScheduler]
-    DB[(SQLite: daily_snapshots)]
-  end
-
-  FRED[FRED API]
-  LLM[LLM HTTP API\n(OpenAI-compatible)]
-
-  RATES --> API
-  ASST --> API
-  API --> RMOD
-  API --> AG
-  AG --> MATH
-  AG --> DB
-  RMOD --> DB
-  RMOD --> FRED
-  AG --> LLM
-  SCH -->|daily| RMOD
-```
 
 ### 5.2 Sequence: rates dashboard load
 
