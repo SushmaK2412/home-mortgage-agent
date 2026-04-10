@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>First-time buyer assistant — US homes mortgage rates</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="/" class="sidebar-link">
+          <span class="sidebar-emoji" aria-hidden="true">📊</span>
+          <span class="sidebar-label">Rates &amp; chart</span>
+        </a>
+        <a href="/assistant" class="sidebar-link" aria-current="page">
+          <span class="sidebar-emoji" aria-hidden="true">💬</span>
+          <span class="sidebar-label">First-time buyers</span>
+        </a>
+      </nav>
+    </aside>
+    <div class="main-area">
+  <main class="wrap assistant-page">
+    <header class="head">
+      <h1>First-time buyer assistant</h1>
+      <p class="sub">
+        Ask about down payments, pre-approval, rate environment, P&amp;I vs PITI, or how to compare Loan Estimates.
+        This assistant uses an LLM plus tools for benchmark rates and payment math. It is educational only—not legal or tax advice.
+      </p>
+    </header>
+
+    <section class="agent-banner" id="agentBanner" hidden>
+      <p id="agentBannerText"></p>
+    </section>
+
+    <section class="chat-wrap">
+      <div class="chat-thread" id="thread" aria-live="polite"></div>
+      <form class="composer" id="composer" autocomplete="off">
+        <label for="msg" class="sr-only">Your message</label>
+        <textarea
+          id="msg"
+          rows="2"
+          placeholder="e.g. What’s the difference between pre-qualification and pre-approval?"
+          maxlength="4000"
+        ></textarea>
+        <button type="submit" class="btn-send" id="sendBtn">Send</button>
+      </form>
+    </section>
+
+    <p class="disclaimer">
+      No personal data is stored on this server. Do not enter SSN or full account details. For your situation, talk to a HUD-approved housing counselor or a licensed lender.
+    </p>
+  </main>
+    </div>
+  </div>
+  <script src="/static/agent.js"></script>
+</body>
+</html>

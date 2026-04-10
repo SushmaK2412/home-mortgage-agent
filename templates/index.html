@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>US homes mortgage rates</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="/" class="sidebar-link" aria-current="page">
+          <span class="sidebar-emoji" aria-hidden="true">📊</span>
+          <span class="sidebar-label">Rates &amp; chart</span>
+        </a>
+        <a href="/assistant" class="sidebar-link">
+          <span class="sidebar-emoji" aria-hidden="true">💬</span>
+          <span class="sidebar-label">First-time buyers</span>
+        </a>
+      </nav>
+    </aside>
+    <div class="main-area">
+  <main class="wrap">
+    <header class="head">
+      <h1>US homes mortgage rates</h1>
+      <p class="sub">
+        Source: FRED series MORTGAGE30US &amp; MORTGAGE15US (Freddie Mac weekly survey).
+        Values update when FRED publishes; the daily job refreshes the snapshot at 9:00 in your configured timezone.
+      </p>
+    </header>
+
+    <section class="tiles" id="tiles">
+      <div class="tile tile-30">
+        <span class="label">30-year fixed</span>
+        <span class="value" id="r30">—</span>
+        <span class="meta" id="m30"></span>
+      </div>
+      <div class="tile tile-15">
+        <span class="label">15-year fixed</span>
+        <span class="value" id="r15">—</span>
+        <span class="meta" id="m15"></span>
+      </div>
+    </section>
+
+    <section class="chart-block">
+      <div class="chart-head">
+        <label for="range">Chart range</label>
+        <select id="range" aria-describedby="chart-hint">
+          <option value="7d">Last 7 days</option>
+          <option value="30d" selected>Last 30 days</option>
+          <option value="90d">Last 90 days</option>
+          <option value="1y">Last year</option>
+        </select>
+        <span class="chart-hint" id="chart-hint">FRED may take a moment for longer ranges</span>
+      </div>
+      <div class="canvas-wrap" id="chartWrap" aria-busy="false">
+        <div class="chart-loading" id="chartLoading">
+          <div class="spinner" role="status" aria-label="Loading chart"></div>
+          <span class="chart-loading-text">Loading chart data…</span>
+        </div>
+        <p class="chart-err" id="chartErr" hidden></p>
+        <canvas id="rateChart" aria-label="Homes mortgage rates over time"></canvas>
+      </div>
+    </section>
+  </main>
+    </div>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
