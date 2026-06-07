@@ -102,6 +102,4 @@ docs/               # Tech magazine article draft
 - In-process APScheduler runs **per process**; multiple replicas need external scheduling or a single worker for the cron job.
 - LLM usage may incur **provider billing**; add rate limits and monitoring for public deployments.
 
-## Further reading
 
-Architecture and design rationale: [`docs/TECH_MAGAZINE_ARTICLE.md`](docs/TECH_MAGAZINE_ARTICLE.md).
