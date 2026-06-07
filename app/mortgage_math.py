@@ -1,4 +1,4 @@
-"""Deterministic mortgage calculations for agent tools (not legal/financial advice)."""
+"""Deterministic P&I amortization used by the first-time buyer assistant tools."""
 
 
 def monthly_principal_interest(loan_amount: float, annual_rate_percent: float, years: int) -> float:

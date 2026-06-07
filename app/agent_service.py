@@ -1,3 +1,5 @@
+"""First-time buyer LLM assistant: system prompt, tool loop, OpenAI-compatible API."""
+
 import json
 import logging
 from typing import Any, Dict, List
@@ -115,7 +117,7 @@ async def run_chat(
     user_turns: List[Dict[str, str]],
 ) -> str:
     if not settings.openai_api_key:
-        raise RuntimeError("OPENAI_API_KEY is not configured")
+        raise RuntimeError("LLM API key not configured (set OPENAI_API_KEY in .env)")
 
     system_content = SYSTEM_PROMPT + "\n\n" + _rate_context_block(store)
     api_messages: List[Dict[str, Any]] = [{"role": "system", "content": system_content}]
@@ -151,7 +153,7 @@ async def run_chat(
         async with httpx.AsyncClient(timeout=120.0) as client:
             r = await client.post(url, headers=headers, json=payload)
             if r.status_code >= 400:
-                logger.warning("OpenAI error %s: %s", r.status_code, r.text[:500])
+                logger.warning("LLM API error %s: %s", r.status_code, r.text[:500])
                 r.raise_for_status()
             data = r.json()
 

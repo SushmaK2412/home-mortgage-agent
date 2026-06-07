@@ -1,3 +1,5 @@
+"""SQLite persistence for FRED benchmark snapshots only (no chat or user data)."""
+
 import sqlite3
 from contextlib import contextmanager
 from dataclasses import dataclass

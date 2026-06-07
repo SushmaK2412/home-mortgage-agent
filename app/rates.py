@@ -1,3 +1,5 @@
+"""Refresh daily benchmark snapshots and build chart series from FRED."""
+
 import logging
 from datetime import date, datetime, timedelta
 from typing import Dict, Optional

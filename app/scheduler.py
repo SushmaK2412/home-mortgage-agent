@@ -1,3 +1,5 @@
+"""Daily 09:00 job to refresh national mortgage benchmark snapshots from FRED."""
+
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 

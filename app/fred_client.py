@@ -1,3 +1,5 @@
+"""HTTP client for FRED mortgage rate series (MORTGAGE30US, MORTGAGE15US)."""
+
 from datetime import date, timedelta
 from typing import Any, Dict, List, Optional, Tuple
 

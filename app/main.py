@@ -1,3 +1,5 @@
+"""FastAPI application: rates dashboard, first-time buyer assistant, and JSON APIs."""
+
 from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import List
@@ -54,7 +56,15 @@ async def lifespan(app: FastAPI):
     app.state.scheduler.shutdown(wait=False)
 
 
-app = FastAPI(title="US Homes Mortgage Rates", lifespan=lifespan)
+app = FastAPI(
+    title="US Homes Mortgage Agent",
+    description=(
+        "National 30y/15y mortgage benchmarks from FRED, daily snapshots, "
+        "and a first-time buyer LLM assistant with tool calling."
+    ),
+    version="1.0.0",
+    lifespan=lifespan,
+)
 app.mount("/static", StaticFiles(directory=str(BASE / "static")), name="static")
 
 
@@ -124,7 +134,7 @@ async def api_chat(request: Request, body: ChatRequest):
     if not settings.openai_api_key:
         raise HTTPException(
             status_code=503,
-            detail="Assistant is not configured. Set OPENAI_API_KEY in .env",
+            detail="Assistant is not configured. Set OPENAI_API_KEY (or compatible LLM key) in .env",
         )
     store: RateStore = request.app.state.store
     turns = []

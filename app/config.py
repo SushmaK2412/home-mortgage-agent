@@ -1,3 +1,5 @@
+"""Environment-backed settings (FRED, SQLite, optional LLM provider)."""
+
 from typing import Optional
 
 from pydantic import BaseSettings
